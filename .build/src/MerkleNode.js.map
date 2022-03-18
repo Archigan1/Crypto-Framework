@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/MerkleNode.ts"],
+  "sourcesContent": ["class MerkleNode {\n  value: string;\n  left: MerkleNode | null;\n  right: MerkleNode | null;\n  constructor(\n    value: string,\n    left: MerkleNode | null = null,\n    right: MerkleNode | null = null\n  ) {\n    this.value = value;\n    this.left = left;\n    this.right = right;\n  }\n}\n\nexport default MerkleNode;"],
+  "mappings": ";;;;;;;AAAA;AAAA;AAAA;AAAA,iBAAiB;AAAA,EAIf,YACE,OACA,OAA0B,MAC1B,QAA2B,MAC3B;AACA,SAAK,QAAQ;AACb,SAAK,OAAO;AACZ,SAAK,QAAQ;AAAA;AAAA;AAIjB,IAAO,qBAAQ;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/newWallet.ts"],
+  "sourcesContent": ["import { getWallet } from '../database';\nimport Wallet from './Wallet';\n\nexport async function create(username: string) {\n  const newWallet = new Wallet();\n  const wallet = await getWallet(username);\n  wallet.balance = 0;\n  wallet.publicKey = newWallet.publicKey;\n  wallet.privateKey = newWallet.privateKey;\n  wallet.save();\n  console.log(`New wallet for user ${username}`);\n  console.log(newWallet);\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,sBAA0B;AAC1B,oBAAmB;AAEnB,sBAA6B,UAAkB;AAC7C,QAAM,YAAY,IAAI;AACtB,QAAM,SAAS,MAAM,+BAAU;AAC/B,SAAO,UAAU;AACjB,SAAO,YAAY,UAAU;AAC7B,SAAO,aAAa,UAAU;AAC9B,SAAO;AACP,UAAQ,IAAI,uBAAuB;AACnC,UAAQ,IAAI;AAAA;",
+  "names": []
+}

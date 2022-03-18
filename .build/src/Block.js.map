@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/Block.ts"],
+  "sourcesContent": ["import Chain from \"./Chain\";\nimport MerkleTree from \"./MerkleTree\";\nimport Transaction from \"./Transaction\";\nimport { calculateHash } from \"./utils\";\n\nclass Block {\n  data: Array<Transaction>;\n  hash: string;\n  previousHash: string | null;\n  rootHash: string;\n  timestamp: Date;\n  pow: number;\n  constructor(data: Array<Transaction>, previousHash: string | null) {\n    this.data = data;\n    this.hash = \"\";\n    this.previousHash = previousHash;\n    this.rootHash = MerkleTree.create(data).root.value;\n    this.timestamp = new Date();\n    this.pow = 0;\n  }\n\n  mine(difficulty: number) {\n    const regex = new RegExp(`^(0){${difficulty}}.*`);\n    while (!this.hash.match(regex)) {\n      this.pow++;\n      this.hash = calculateHash(this);\n    }\n  }\n\n  hasValidTransactions(chain: Chain) {\n    return this.data.every((transaction: Transaction) =>\n      transaction.isValid(chain)\n    );\n  }\n}\n\nexport default Block;"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AACA,wBAAuB;AAEvB,mBAA8B;AAE9B,YAAY;AAAA,EAOV,YAAY,MAA0B,cAA6B;AACjE,SAAK,OAAO;AACZ,SAAK,OAAO;AACZ,SAAK,eAAe;AACpB,SAAK,WAAW,0BAAW,OAAO,MAAM,KAAK;AAC7C,SAAK,YAAY,IAAI;AACrB,SAAK,MAAM;AAAA;AAAA,EAGb,KAAK,YAAoB;AACvB,UAAM,QAAQ,IAAI,OAAO,QAAQ;AACjC,WAAO,CAAC,KAAK,KAAK,MAAM,QAAQ;AAC9B,WAAK;AACL,WAAK,OAAO,gCAAc;AAAA;AAAA;AAAA,EAI9B,qBAAqB,OAAc;AACjC,WAAO,KAAK,KAAK,MAAM,CAAC,gBACtB,YAAY,QAAQ;AAAA;AAAA;AAK1B,IAAO,gBAAQ;",
+  "names": []
+}
