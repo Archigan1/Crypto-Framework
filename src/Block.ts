@@ -3,17 +3,17 @@ import { calculateHash, Chain, Transaction, MerkleTree } from "../internal";
 /** Creates a `Block` instance for `Transaction`s and `Chain`s. */
 
 class Block {
-  /**
-  * Constructs the `Block` class.
-  * @param {Array<Transaction>} data - provides the block data in terms of an array of `Transaction`s.
-  * @param {String | Null} previousHash - The hash of the previous `Block` in the chain.
-  */
   data: Array<Transaction>;
   hash: string;
   previousHash: string | null;
   rootHash: string;
   timestamp: Date;
   pow: number;
+  /**
+  * Constructs the `Block` class.
+  * @param {Array<Transaction>} data - provides the block data in terms of an array of `Transaction`s.
+  * @param {String | Null} previousHash - The hash of the previous `Block` in the chain.
+  */
   constructor(data: Array<Transaction>, previousHash: string | null) {
     /** @private */
     this.data = data;
