@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../index.ts"],
-  "sourcesContent": ["import Chain from \"./src/Chain\";\nimport { create } from './src/newWallet';\n\nfunction createTestWallet(username: string) {\n  create(username);\n}\n\n/* function init() {\n  const blockchain = Chain.create(Alice.publicKey);\n  Alice.send(1299, Bob.publicKey, blockchain);\n  Alice.send(345, Bob.publicKey, blockchain);\n  blockchain.mineTransactions(Bob.publicKey);\n  console.log(\"Alice has \" + blockchain.getBalance(Alice.publicKey));\n  console.log(\"Bob has \" + blockchain.getBalance(Bob.publicKey));\n  console.log(`Blockchain is${blockchain.isValid() ? \"\" : \" not\"} valid`);\n} */"],
-  "mappings": ";;;;;;;;;;;;;;;;;;AACA,uBAAuB;AAEvB,0BAA0B,UAAkB;AAC1C,+BAAO;AAAA;",
+  "sourcesContent": ["import Chain from \"./src/Chain\";\nimport { create } from './src/newWallet';\n\nfunction createTestWallet(username: string) {\n  create(username);\n}\n\ncreateTestWallet(\"test\");\n\n/* function init() {\n  const blockchain = Chain.create(Alice.publicKey);\n  Alice.send(1299, Bob.publicKey, blockchain);\n  Alice.send(345, Bob.publicKey, blockchain);\n  blockchain.mineTransactions(Bob.publicKey);\n  console.log(\"Alice has \" + blockchain.getBalance(Alice.publicKey));\n  console.log(\"Bob has \" + blockchain.getBalance(Bob.publicKey));\n  console.log(`Blockchain is${blockchain.isValid() ? \"\" : \" not\"} valid`);\n} */"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AACA,uBAAuB;AAEvB,0BAA0B,UAAkB;AAC1C,+BAAO;AAAA;AAGT,iBAAiB;",
   "names": []
 }

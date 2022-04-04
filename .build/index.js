@@ -20,4 +20,5 @@ var import_newWallet = __toModule(require("./src/newWallet"));
 function createTestWallet(username) {
   (0, import_newWallet.create)(username);
 }
+createTestWallet("test");
 //# sourceMappingURL=index.js.map

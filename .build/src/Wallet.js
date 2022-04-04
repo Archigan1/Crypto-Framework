@@ -22,7 +22,7 @@ var __toModule = (module2) => {
   return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
 __export(exports, {
-  default: () => Wallet_default
+  default: () => Wallet
 });
 var import_crypto = __toModule(require("crypto"));
 var import_Transaction = __toModule(require("./Transaction"));
@@ -42,7 +42,6 @@ class Wallet {
     blockchain.addTransaction(transaction);
   }
 }
-var Wallet_default = Wallet;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {});
 //# sourceMappingURL=Wallet.js.map

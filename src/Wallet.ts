@@ -2,7 +2,7 @@ import { generateKeyPairSync } from "crypto";
 import Chain from "./Chain";
 import Transaction from "./Transaction";
 
-class Wallet {
+export default class Wallet {
   privateKey: string;
   publicKey: string;
   constructor() {
@@ -21,5 +21,3 @@ class Wallet {
     blockchain.addTransaction(transaction);
   }
 }
-
-export default Wallet;

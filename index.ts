@@ -5,6 +5,8 @@ function createTestWallet(username: string) {
   create(username);
 }
 
+createTestWallet("test");
+
 /* function init() {
   const blockchain = Chain.create(Alice.publicKey);
   Alice.send(1299, Bob.publicKey, blockchain);
