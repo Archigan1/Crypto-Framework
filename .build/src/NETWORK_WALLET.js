@@ -24,8 +24,8 @@ var __toModule = (module2) => {
 __export(exports, {
   default: () => NETWORK_WALLET_default
 });
-var import_Wallet = __toModule(require("./Wallet"));
-const NETWORK_WALLET = new import_Wallet.default();
+var import_internal = __toModule(require("../internal"));
+const NETWORK_WALLET = new import_internal.Wallet();
 var NETWORK_WALLET_default = NETWORK_WALLET;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {});

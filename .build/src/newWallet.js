@@ -25,9 +25,9 @@ __export(exports, {
   create: () => create
 });
 var import_database = __toModule(require("../database"));
-var import_Wallet = __toModule(require("./Wallet"));
+var import_internal = __toModule(require("../internal"));
 async function create(username) {
-  const newWallet = new import_Wallet.default();
+  const newWallet = new import_internal.Wallet();
   const wallet = await (0, import_database.getWallet)(username);
   wallet.balance = 0;
   wallet.publicKey = newWallet.publicKey;

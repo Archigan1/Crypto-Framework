@@ -1,7 +1,8 @@
-import Block from "./Block";
-import NETWORK_WALLET from "./NETWORK_WALLET";
-import Transaction from "./Transaction";
-import { calculateHash } from "./utils";
+import { calculateHash, NETWORK_WALLET, Block, Transaction } from '../internal';
+
+/**
+* Defines a `Chain` instance. 
+*/
 
 class Chain {
   chain: Array<Block>;

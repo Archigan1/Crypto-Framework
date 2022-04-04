@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../internal.ts"],
+  "sourcesContent": ["import { getHash, makeRoot, calculateHash } from './src/utils';\nimport Block from './src/Block';\nimport Chain from './src/Chain';\nimport Transaction from './src/Transaction';\nimport Wallet from './src/Wallet';\nimport MerkleNode from './src/MerkleNode';\nimport MerkleTree from './src/MerkleTree';\nimport NETWORK_WALLET from './src/NETWORK_WALLET';\nimport { create } from './src/newWallet';\n\nexport { getHash, makeRoot, calculateHash, Block, Chain, Transaction, Wallet, MerkleNode, MerkleTree, NETWORK_WALLET, create };"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,mBAAiD;AACjD,mBAAkB;AAClB,mBAAkB;AAClB,yBAAwB;AACxB,oBAAmB;AACnB,wBAAuB;AACvB,wBAAuB;AACvB,4BAA2B;AAC3B,uBAAuB;",
+  "names": []
+}

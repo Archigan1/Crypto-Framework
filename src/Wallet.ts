@@ -1,6 +1,5 @@
 import { generateKeyPairSync } from "crypto";
-import Chain from "./Chain";
-import Transaction from "./Transaction";
+import { Chain, Transaction } from '../internal';
 
 export default class Wallet {
   privateKey: string;

@@ -1,11 +1,10 @@
-import Chain from "./src/Chain";
-import { create } from './src/newWallet';
+import { Chain, create } from './internal';
 
 function createTestWallet(username: string) {
   create(username);
 }
 
-createTestWallet("test");
+// createTestWallet("test");
 
 /* function init() {
   const blockchain = Chain.create(Alice.publicKey);

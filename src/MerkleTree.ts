@@ -1,6 +1,4 @@
-import MerkleNode from "./MerkleNode";
-import Transaction from "./Transaction";
-import { getHash, makeRoot } from "./utils";
+import { getHash, makeRoot, MerkleNode, Transaction } from '../internal';
 
 class MerkleTree {
   root: MerkleNode;

@@ -1,6 +1,5 @@
 import { createHash } from "crypto";
-import Block from "./Block";
-import MerkleNode from "./MerkleNode";
+import { Block, MerkleNode } from '../internal';
 
 export const getHash = (data: string): string => {
   return createHash("sha256").update(data.toString()).digest("hex");

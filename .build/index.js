@@ -16,9 +16,8 @@ var __reExport = (target, module2, desc) => {
 var __toModule = (module2) => {
   return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
-var import_newWallet = __toModule(require("./src/newWallet"));
+var import_internal = __toModule(require("./internal"));
 function createTestWallet(username) {
-  (0, import_newWallet.create)(username);
+  (0, import_internal.create)(username);
 }
-createTestWallet("test");
 //# sourceMappingURL=index.js.map

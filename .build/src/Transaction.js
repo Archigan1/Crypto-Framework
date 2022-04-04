@@ -26,7 +26,7 @@ __export(exports, {
 });
 var import_uuid = __toModule(require("uuid"));
 var import_crypto = __toModule(require("crypto"));
-var import_NETWORK_WALLET = __toModule(require("./NETWORK_WALLET"));
+var import_internal = __toModule(require("../internal"));
 class Transaction {
   constructor(senderPubKey, receiverPubKey, amount) {
     const id = (0, import_uuid.v4)();
@@ -53,7 +53,7 @@ class Transaction {
     const isVerified = verify.verify(this.sender, sig);
     const data = this.sender + this.receiver + this.amount + this.id;
     const hash = (0, import_crypto.createHash)("sha256").update(data).digest("hex");
-    return this.sender && this.receiver && this.amount && (chain.getBalance(this.sender) >= this.amount || this.sender === import_NETWORK_WALLET.default.publicKey) && this.hash === hash && isVerified;
+    return this.sender && this.receiver && this.amount && (chain.getBalance(this.sender) >= this.amount || this.sender === import_internal.NETWORK_WALLET.publicKey) && this.hash === hash && isVerified;
   }
 }
 var Transaction_default = Transaction;

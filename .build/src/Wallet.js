@@ -25,7 +25,7 @@ __export(exports, {
   default: () => Wallet
 });
 var import_crypto = __toModule(require("crypto"));
-var import_Transaction = __toModule(require("./Transaction"));
+var import_internal = __toModule(require("../internal"));
 class Wallet {
   constructor() {
     const keys = (0, import_crypto.generateKeyPairSync)("rsa", {
@@ -37,7 +37,7 @@ class Wallet {
     this.publicKey = keys.publicKey;
   }
   send(amount, receiver, blockchain) {
-    const transaction = new import_Transaction.default(this.publicKey, receiver, amount);
+    const transaction = new import_internal.Transaction(this.publicKey, receiver, amount);
     transaction.sign(this);
     blockchain.addTransaction(transaction);
   }

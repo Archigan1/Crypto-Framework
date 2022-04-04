@@ -1,4 +1,4 @@
-import Wallet from "./Wallet";
+import { Wallet } from '../internal';
 
 const NETWORK_WALLET = new Wallet();
 

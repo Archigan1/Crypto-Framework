@@ -1,5 +1,5 @@
 import { getWallet } from '../database';
-import Wallet from './Wallet';
+import { Wallet } from '../internal';
 
 export async function create(username: string) {
   const newWallet = new Wallet();

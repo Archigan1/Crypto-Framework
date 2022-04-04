@@ -24,8 +24,7 @@ var __toModule = (module2) => {
 __export(exports, {
   default: () => MerkleTree_default
 });
-var import_MerkleNode = __toModule(require("./MerkleNode"));
-var import_utils = __toModule(require("./utils"));
+var import_internal = __toModule(require("../internal"));
 class MerkleTree {
   constructor(root, size) {
     this.root = root;
@@ -33,7 +32,7 @@ class MerkleTree {
   }
   static create(transactions) {
     const size = Math.ceil(Math.log2(transactions.length)) + 1;
-    const root = (0, import_utils.makeRoot)(transactions.map((trn) => new import_MerkleNode.default(trn.hash)));
+    const root = (0, import_internal.makeRoot)(transactions.map((trn) => new import_internal.MerkleNode(trn.hash)));
     return new MerkleTree(root, size);
   }
   findSiblingOf(hash, node = this.root) {
@@ -53,7 +52,7 @@ class MerkleTree {
     let sibling = this.findSiblingOf(hash);
     while (sibling && sibling.node.value !== this.root.value) {
       const val = sibling.left ? sibling.node.value + hash : hash + sibling.node.value;
-      hash = (0, import_utils.getHash)(val);
+      hash = (0, import_internal.getHash)(val);
       sibling = this.findSiblingOf(hash);
     }
     return sibling && sibling.node.value === this.root.value ? true : false;

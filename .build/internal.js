@@ -22,29 +22,39 @@ var __toModule = (module2) => {
   return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
 __export(exports, {
-  getWallet: () => getWallet,
-  wallet: () => wallet
+  Block: () => import_Block.default,
+  Chain: () => import_Chain.default,
+  MerkleNode: () => import_MerkleNode.default,
+  MerkleTree: () => import_MerkleTree.default,
+  NETWORK_WALLET: () => import_NETWORK_WALLET.default,
+  Transaction: () => import_Transaction.default,
+  Wallet: () => import_Wallet.default,
+  calculateHash: () => import_utils.calculateHash,
+  create: () => import_newWallet.create,
+  getHash: () => import_utils.getHash,
+  makeRoot: () => import_utils.makeRoot
 });
-var import_mongoose = __toModule(require("mongoose"));
-(0, import_mongoose.pluralize)((s) => s);
-(0, import_mongoose.connect)(process.env.DATABASE).catch((e) => {
-  console.error(e);
-  console.log("Error while connecting to database, see above for full error");
-  process.exit();
-});
-const WalletSchema = new import_mongoose.Schema({
-  username: String,
-  balance: Number,
-  publicKey: String,
-  privateKey: String
-});
-const wallet = (0, import_mongoose.model)("wallets", WalletSchema);
-async function getWallet(id) {
-  return await wallet.findOne({ username: id }) || new wallet({ username: id });
-}
+var import_utils = __toModule(require("./src/utils"));
+var import_Block = __toModule(require("./src/Block"));
+var import_Chain = __toModule(require("./src/Chain"));
+var import_Transaction = __toModule(require("./src/Transaction"));
+var import_Wallet = __toModule(require("./src/Wallet"));
+var import_MerkleNode = __toModule(require("./src/MerkleNode"));
+var import_MerkleTree = __toModule(require("./src/MerkleTree"));
+var import_NETWORK_WALLET = __toModule(require("./src/NETWORK_WALLET"));
+var import_newWallet = __toModule(require("./src/newWallet"));
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  getWallet,
-  wallet
+  Block,
+  Chain,
+  MerkleNode,
+  MerkleTree,
+  NETWORK_WALLET,
+  Transaction,
+  Wallet,
+  calculateHash,
+  create,
+  getHash,
+  makeRoot
 });
-//# sourceMappingURL=database.js.map
+//# sourceMappingURL=internal.js.map

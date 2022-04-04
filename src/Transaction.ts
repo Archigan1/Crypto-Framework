@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { createHash, createSign, createVerify } from "crypto";
-import NETWORK_WALLET from "./NETWORK_WALLET";
-import Wallet from "./Wallet";
-import Chain from "./Chain";
+import { NETWORK_WALLET, Wallet, Chain } from '../internal';
 
 class Transaction {
   id: string;

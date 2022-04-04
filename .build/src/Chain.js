@@ -24,10 +24,7 @@ var __toModule = (module2) => {
 __export(exports, {
   default: () => Chain_default
 });
-var import_Block = __toModule(require("./Block"));
-var import_NETWORK_WALLET = __toModule(require("./NETWORK_WALLET"));
-var import_Transaction = __toModule(require("./Transaction"));
-var import_utils = __toModule(require("./utils"));
+var import_internal = __toModule(require("../internal"));
 class Chain {
   constructor(chain, difficulty) {
     this.chain = chain;
@@ -37,26 +34,26 @@ class Chain {
     this.reward = 678;
   }
   static create(firstUserAddress) {
-    const firstTransaction = new import_Transaction.default(import_NETWORK_WALLET.default.publicKey, firstUserAddress, 1e4);
-    firstTransaction.sign(import_NETWORK_WALLET.default);
-    const genesisBlock = new import_Block.default([firstTransaction], null);
+    const firstTransaction = new import_internal.Transaction(import_internal.NETWORK_WALLET.publicKey, firstUserAddress, 1e4);
+    firstTransaction.sign(import_internal.NETWORK_WALLET);
+    const genesisBlock = new import_internal.Block([firstTransaction], null);
     genesisBlock.mine(3);
     return new Chain([genesisBlock], 3);
   }
   addBlock(transactions) {
     const lastBlock = this.chain.at(-1);
-    const newBlock = new import_Block.default(transactions, lastBlock ? lastBlock.hash : null);
+    const newBlock = new import_internal.Block(transactions, lastBlock ? lastBlock.hash : null);
     newBlock.mine(this.difficulty);
     this.chain.push(newBlock);
     this.difficulty += Date.now() - newBlock.timestamp.getTime() > this.blockTime ? -1 : 1;
   }
   isValid() {
-    if (this.chain[0].hash !== (0, import_utils.calculateHash)(this.chain[0]) || !this.chain[0].hasValidTransactions(this))
+    if (this.chain[0].hash !== (0, import_internal.calculateHash)(this.chain[0]) || !this.chain[0].hasValidTransactions(this))
       return false;
     for (let index = 1; index < this.chain.length; index++) {
       const currentBlock = this.chain[index];
       const previousBlock = this.chain[index - 1];
-      if (currentBlock.hash !== (0, import_utils.calculateHash)(currentBlock) || previousBlock.hash !== currentBlock.previousHash || !currentBlock.hasValidTransactions(this))
+      if (currentBlock.hash !== (0, import_internal.calculateHash)(currentBlock) || previousBlock.hash !== currentBlock.previousHash || !currentBlock.hasValidTransactions(this))
         return false;
     }
     return true;
@@ -82,8 +79,8 @@ class Chain {
     return balance;
   }
   mineTransactions(rewardAddress) {
-    const rewardTransaction = new import_Transaction.default(import_NETWORK_WALLET.default.publicKey, rewardAddress, this.reward);
-    rewardTransaction.sign(import_NETWORK_WALLET.default);
+    const rewardTransaction = new import_internal.Transaction(import_internal.NETWORK_WALLET.publicKey, rewardAddress, this.reward);
+    rewardTransaction.sign(import_internal.NETWORK_WALLET);
     this.addBlock([rewardTransaction, ...this.transactions]);
     this.transactions = [];
   }

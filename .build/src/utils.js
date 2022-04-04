@@ -27,7 +27,7 @@ __export(exports, {
   makeRoot: () => makeRoot
 });
 var import_crypto = __toModule(require("crypto"));
-var import_MerkleNode = __toModule(require("./MerkleNode"));
+var import_internal = __toModule(require("../internal"));
 const getHash = (data) => {
   return (0, import_crypto.createHash)("sha256").update(data.toString()).digest("hex");
 };
@@ -44,7 +44,7 @@ const makeRoot = (arr) => {
     }
     const nextItem = arr[i + 1];
     let value = currentItem.value + nextItem.value;
-    const node = new import_MerkleNode.default(getHash(value), currentItem, nextItem);
+    const node = new import_internal.MerkleNode(getHash(value), currentItem, nextItem);
     list.push(node);
   }
   return makeRoot(list);

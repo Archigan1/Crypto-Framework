@@ -24,14 +24,13 @@ var __toModule = (module2) => {
 __export(exports, {
   default: () => Block_default
 });
-var import_MerkleTree = __toModule(require("./MerkleTree"));
-var import_utils = __toModule(require("./utils"));
+var import_internal = __toModule(require("../internal"));
 class Block {
   constructor(data, previousHash) {
     this.data = data;
     this.hash = "";
     this.previousHash = previousHash;
-    this.rootHash = import_MerkleTree.default.create(data).root.value;
+    this.rootHash = import_internal.MerkleTree.create(data).root.value;
     this.timestamp = new Date();
     this.pow = 0;
   }
@@ -39,7 +38,7 @@ class Block {
     const regex = new RegExp(`^(0){${difficulty}}.*`);
     while (!this.hash.match(regex)) {
       this.pow++;
-      this.hash = (0, import_utils.calculateHash)(this);
+      this.hash = (0, import_internal.calculateHash)(this);
     }
   }
   hasValidTransactions(chain) {
