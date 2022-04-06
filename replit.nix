@@ -8,3 +8,5 @@
         nodePackages.typescript-language-server
     ];
 }
+
+sudo
