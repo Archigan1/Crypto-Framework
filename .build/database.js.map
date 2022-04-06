@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../database.ts"],
-  "sourcesContent": ["import { pluralize, model, connect, Schema, Document } from \"mongoose\";\n\npluralize(s => s);\n\nconnect(process.env.DATABASE!).catch((e: Error) => {\n    console.error(e);\n    console.log(\"Error while connecting to database, see above for full error\");\n    process.exit();\n});\n\n\ninterface IWallet extends Document {\n  username: string;\n  balance: number;\n  publicKey: string;\n  privateKey: string;\n}\nconst WalletSchema = new Schema({\n  username: String,\n  balance: Number,\n  publicKey: String,\n  privateKey: String\n});\nexport const wallet = model<IWallet>(\"wallets\", WalletSchema);\n\n\nexport async function getWallet(id: string) {\n  return await wallet.findOne({ username: id }) || new wallet({ username: id });\n}"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA,sBAA4D;AAE5D,+BAAU,OAAK;AAEf,6BAAQ,QAAQ,IAAI,UAAW,MAAM,CAAC,MAAa;AAC/C,UAAQ,MAAM;AACd,UAAQ,IAAI;AACZ,UAAQ;AAAA;AAUZ,MAAM,eAAe,IAAI,uBAAO;AAAA,EAC9B,UAAU;AAAA,EACV,SAAS;AAAA,EACT,WAAW;AAAA,EACX,YAAY;AAAA;AAEP,MAAM,SAAS,2BAAe,WAAW;AAGhD,yBAAgC,IAAY;AAC1C,SAAO,MAAM,OAAO,QAAQ,EAAE,UAAU,SAAS,IAAI,OAAO,EAAE,UAAU;AAAA;",
-  "names": []
-}

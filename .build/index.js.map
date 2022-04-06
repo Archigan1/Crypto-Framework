@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../index.ts"],
-  "sourcesContent": ["import { Chain, create } from './internal';\n\nfunction createTestWallet(username: string) {\n  create(username);\n}\n\n// createTestWallet(\"test\");\n\n/* function init() {\n  const blockchain = Chain.create(Alice.publicKey);\n  Alice.send(1299, Bob.publicKey, blockchain);\n  Alice.send(345, Bob.publicKey, blockchain);\n  blockchain.mineTransactions(Bob.publicKey);\n  console.log(\"Alice has \" + blockchain.getBalance(Alice.publicKey));\n  console.log(\"Bob has \" + blockchain.getBalance(Bob.publicKey));\n  console.log(`Blockchain is${blockchain.isValid() ? \"\" : \" not\"} valid`);\n} */"],
-  "mappings": ";;;;;;;;;;;;;;;;;;AAAA,sBAA8B;AAE9B,0BAA0B,UAAkB;AAC1C,8BAAO;AAAA;",
-  "names": []
-}

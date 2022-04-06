@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/NETWORK_WALLET.ts"],
-  "sourcesContent": ["import { Wallet } from '../internal';\n\nconst NETWORK_WALLET = new Wallet();\n\nexport default NETWORK_WALLET;"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,sBAAuB;AAEvB,MAAM,iBAAiB,IAAI;AAE3B,IAAO,yBAAQ;",
-  "names": []
-}

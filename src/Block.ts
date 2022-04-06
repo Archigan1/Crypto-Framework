@@ -1,6 +1,9 @@
 import { calculateHash, Chain, Transaction, MerkleTree } from "../internal";
 
-/** Creates a `Block` instance for `Transaction`s and `Chain`s. */
+/** 
+* Creates a `Block` instance for `Transaction`s and `Chain`s. 
+* @since v1.0.0
+*/
 
 class Block {
   data: Array<Transaction>;
@@ -11,8 +14,14 @@ class Block {
   pow: number;
   /**
   * Constructs the `Block` class.
+<<<<<<< HEAD
+  * @param data - Provides the block data in terms of an array of `Transaction`s.
+  * @param previousHash - The hash of the previous `Block` in the chain.
+  * @since v1.0.0
+=======
   * @param {Array<Transaction>} data - provides the block data in terms of an array of `Transaction`s.
   * @param {String | Null} previousHash - The hash of the previous `Block` in the chain.
+>>>>>>> origin/main
   */
   constructor(data: Array<Transaction>, previousHash: string | null) {
     /** @private */
@@ -31,7 +40,8 @@ class Block {
   
   /** 
   * The method used to mine a `Block`.
-  * @param {Number} difficulty - The number of zeroes a generated hash must have for the block to be mined.
+  * @param difficulty - The number of zeroes a generated hash must have for the block to be mined.
+  * @since v1.0.0
   */
   mine(difficulty: number) {
     const regex = new RegExp(`^(0){${difficulty}}.*`);
@@ -43,12 +53,13 @@ class Block {
   
   /**
   * Used to verify all of the `Transaction`s.
-  * @param {Chain} chain - The `Chain` to validify.
-  * @return {Boolean}
+  * @param chain - The `Chain` to validify.
+  * @returns Whether the entire chain is valid or not.
+  * @since v1.0.0
   */
-  hasValidTransactions(chain: Chain) {
+  hasValidTransactions(chain: Chain): boolean {
     return this.data.every((transaction: Transaction) =>
-      transaction.isValid(chain)
+      transaction.isValid(chain);
     );
   }
 }

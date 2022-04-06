@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/Wallet.ts"],
-  "sourcesContent": ["import { generateKeyPairSync } from \"crypto\";\nimport { Chain, Transaction } from '../internal';\n\nexport default class Wallet {\n  privateKey: string;\n  publicKey: string;\n  constructor() {\n    const keys = generateKeyPairSync(\"rsa\", {\n      modulusLength: 2048,\n      publicKeyEncoding: { type: \"spki\", format: \"pem\" },\n      privateKeyEncoding: { type: \"pkcs8\", format: \"pem\" },\n    });\n    this.privateKey = keys.privateKey;\n    this.publicKey = keys.publicKey;\n  }\n\n  send(amount: number, receiver: string, blockchain: Chain) {\n    const transaction = new Transaction(this.publicKey, receiver, amount);\n    transaction.sign(this);\n    blockchain.addTransaction(transaction);\n  }\n}"],
-  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA,oBAAoC;AACpC,sBAAmC;AAEnC,aAA4B;AAAA,EAG1B,cAAc;AACZ,UAAM,OAAO,uCAAoB,OAAO;AAAA,MACtC,eAAe;AAAA,MACf,mBAAmB,EAAE,MAAM,QAAQ,QAAQ;AAAA,MAC3C,oBAAoB,EAAE,MAAM,SAAS,QAAQ;AAAA;AAE/C,SAAK,aAAa,KAAK;AACvB,SAAK,YAAY,KAAK;AAAA;AAAA,EAGxB,KAAK,QAAgB,UAAkB,YAAmB;AACxD,UAAM,cAAc,IAAI,4BAAY,KAAK,WAAW,UAAU;AAC9D,gBAAY,KAAK;AACjB,eAAW,eAAe;AAAA;AAAA;",
-  "names": []
-}
