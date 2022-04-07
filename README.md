@@ -1,5 +1,5 @@
-[![npm version](https://badge.fury.io/js/angular2-expandable-list.svg)](https://badge.fury.io/js/angular2-expandable-list)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![npm version](https://img.shields.io/npm/v/crypto-framework.svg)](https://npmjs.com/package/crypto-framework?activeTab=versions) [![npm downloads](https://img.shields.io/npm/dt/crypto-framework.svg)](https://npmjs.com/package/crypto-framework) [![GitHub top language](https://img.shields.io/github/languages/top/archigan1/crypto-framework.svg)](https://github.com/archigan1/crypto-framework) [![GitHub all releases](https://img.shields.io/github/downloads/archigan1/crypto-framework/total.svg?label=github%20downloads)](https://github.com/archigan1/crypto-framework/releases) ![NPM](https://img.shields.io/npm/l/crypto-framework.svg) [![node-current](https://img.shields.io/node/v/crypto-framework)](https://npmjs.org/package/crypto-framework) [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/archigan1/crypto-framework)](https://github.com/archigan1/crypto-framework/commits/main) [![GitHub contributors](https://img.shields.io/github/contributors/archigan1/crypto-framework)](https://github.com/archigan1/crypto-framework/contributors) ![Maintenance](https://img.shields.io/maintenance/yes/2022)
+
 
 # Crypto Framework
 
@@ -8,22 +8,22 @@
 
 ## Prerequisites
 
-This project requires NodeJS (version 8 or later) and npm.
+This project requires NodeJS (version 10 or later) and npm.
 [Node](http://nodejs.org/) and [npm](https://npmjs.org/) are really easy to install.
 To make sure you have them available on your machine,
 try running the following command.
 
 ```sh
 $ npm -v && node -v
-6.4.1
-v8.16.0
+6.14.12
+v10.24.1
 ```
 
 ## Table of contents
 
-- [Project Name](#crypto-framework)
+- [Crypto Framework](#crypto-framework)
   - [Prerequisites](#prerequisites)
-  - [Table of contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [API](#api)
@@ -51,13 +51,9 @@ $ cd Crypto-Framework
 To install and set up the library, run:
 
 ```sh
-$ npm i --save-dev crypto-framework
-```
-
-Or if you prefer using Yarn:
-
-```sh
-$ yarn add --dev crypto-framework
+$ npm i --save crypto-framework
+$ yarn add crypto-framework
+$ pnpm add crypto-framework
 ```
 
 ## API
@@ -90,8 +86,6 @@ Wallet.send(amount: number, receiver: string, blockchain: Chain);
 ```
 
 ## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 1.  Fork the main branch
 2.  Create your feature branch: `git checkout -b my-new-feature`
