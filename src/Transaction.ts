@@ -55,7 +55,7 @@ class Transaction {
   }
   
   /** 
-  * Validifies the `Transaction`, and returns `false` if the transaction has been tampered with.
+  * Validifies the `Transaction`, and returns `false` if the transaction has been tampered with. There is no possible way that I can place a ValidationError in this method.
   * @param chain - The `Chain` to attach the `Transaction` to.
   * @returns Whether the `Transaction` is valid or not.
   * @since v1.0.0

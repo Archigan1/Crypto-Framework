@@ -6,6 +6,15 @@
 > Welcome to the repository for the NodeJS package [crypto-framework!](https://npmjs.com/package/crypto-framework)
 > This package is meant to be used for a building block to your own cryptocurrency.
 
+## FOREWARNING
+> You only need to download the latest version v1.2.0. v1.2.1 and v1.2.2 are simply README updates.
+
+> If v1.2.0 causes issues, you can download the latest 100% stable version, v1.1.1, like so:
+
+```npm i  --save crypto-framework@1.1.1```
+
+> v1.2.0 Added new custom error types, and the places where I added my new `ValidationError` may cause it to break. This works at runtime, but in production may misbehave due to how TypeScript handles errors. v1.3.0 will hopefully fix this issue.
+
 ## Prerequisites
 
 This project requires NodeJS (version 10 or later) and npm.
@@ -83,6 +92,11 @@ Transaction.isValid(chain: Chain): string | number | boolean;
 // Wallet class
 Wallet();
 Wallet.send(amount: number, receiver: string, blockchain: Chain);
+
+//Error classes (new as of v1.2.0)
+BlockError(message: string);
+
+ValidationError(object: string); // READ JSDOC PROMPTS
 ```
 
 ## Contributing

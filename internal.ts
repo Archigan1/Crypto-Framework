@@ -6,5 +6,6 @@ import Wallet from './src/Wallet';
 import MerkleNode from './src/MerkleNode';
 import MerkleTree from './src/MerkleTree';
 import NETWORK_WALLET from './src/NETWORK_WALLET';
+import { BlockError, ValidationError } from './src/Errors';
 
-export { getHash, makeRoot, calculateHash, Block, Chain, Transaction, Wallet, MerkleNode, MerkleTree, NETWORK_WALLET, create };
+export { getHash, makeRoot, calculateHash, Block, Chain, Transaction, Wallet, MerkleNode, MerkleTree, NETWORK_WALLET, BlockError, ValidationError };

@@ -1,4 +1,4 @@
-import { calculateHash, Chain, Transaction, MerkleTree } from "../internal";
+import { calculateHash, Chain, Transaction, MerkleTree, ValidationError } from "../internal";
 
 /** 
 * Creates a `Block` instance for `Transaction`s and `Chain`s. 
@@ -14,14 +14,11 @@ class Block {
   pow: number;
   /**
   * Constructs the `Block` class.
-<<<<<<< HEAD
   * @param data - Provides the block data in terms of an array of `Transaction`s.
   * @param previousHash - The hash of the previous `Block` in the chain.
   * @since v1.0.0
-=======
   * @param {Array<Transaction>} data - provides the block data in terms of an array of `Transaction`s.
   * @param {String | Null} previousHash - The hash of the previous `Block` in the chain.
->>>>>>> origin/main
   */
   constructor(data: Array<Transaction>, previousHash: string | null) {
     /** @private */
@@ -58,8 +55,16 @@ class Block {
   * @since v1.0.0
   */
   hasValidTransactions(chain: Chain): boolean {
+    if (this.data.every((transaction: Transaction) => transaction.isValid(chain))) {
+      try {
+        throw new ValidationError('Transactions')
+      } catch(e) {
+        console.error(`${e.name}: ${e.super}\n${e.stack}`)
+      }
+    }
+    
     return this.data.every((transaction: Transaction) =>
-      transaction.isValid(chain);
+      transaction.isValid(chain)
     );
   }
 }
