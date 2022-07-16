@@ -7,7 +7,7 @@
 > This package is meant to be used for a building block to your own cryptocurrency.
 
 ## FOREWARNING
-> You only need to download the latest version v1.2.0. v1.2.1 and v1.2.2 are simply README updates.
+> You only need to download the latest version v1.2.0. v1.2.1, v1.2.2, and v1.2.3 are simply README updates.
 
 > If v1.2.0 causes issues, you can download the latest 100% stable version, v1.1.1, like so:
 
@@ -17,7 +17,7 @@
 
 ## Prerequisites
 
-This project requires NodeJS (version 10 or later) and npm.
+This project requires NodeJS (version 10.24.1 or later) and npm.
 [Node](http://nodejs.org/) and [npm](https://npmjs.org/) are really easy to install.
 To make sure you have them available on your machine,
 try running the following command.
@@ -69,7 +69,7 @@ $ pnpm add crypto-framework
 
 Check our (future!) documentation page for API usage.
 
-**NOTE:** The API *does, in fact, exist,* but we don't have any official documentation page yet. I'll sum it up here, with the classes and their methods (hover over the methods in the code for a description):
+**NOTE:** The API *does, in fact, exist,* but we don't have any official documentation page yet. I'll sum it up here, with the classes and their methods (hover over the methods in your code for a description):
 
 ```ts
 // Block class
@@ -96,7 +96,7 @@ Wallet.send(amount: number, receiver: string, blockchain: Chain);
 //Error classes (new as of v1.2.0)
 BlockError(message: string);
 
-ValidationError(object: string); // READ JSDOC PROMPTS
+ValidationError(object: string); // READ JSDOC PROMPTS FOR ERRORS
 ```
 
 ## Contributing
