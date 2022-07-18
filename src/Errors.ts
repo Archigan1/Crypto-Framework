@@ -19,8 +19,9 @@ export class BlockError extends Error {
 
 
 /**
-* Creates a new CustomError, `ValidationError`. This will be apended to eery method that verifies or validates something, and will throw an error if it's not valid. Be wary, my plaement of these errors may have unintended side effects for edge cases.
+* Creates a new CustomError, `ValidationError`. This will be apended to every method that verifies or validates something, and will throw an error if it's not valid.
 * @since v1.2.0
+* @version v1.1.0
 */
 export class ValidationError extends Error {
   object: string;
@@ -29,6 +30,7 @@ export class ValidationError extends Error {
   * Constructs the `ValidationError`.
   * @param object - The object that is not valid.
   * @since v1.2.0
+  * @since v1.1.0
   */
   constructor(object: string) {
     super(`${object} has been returned as not valid`);

@@ -53,14 +53,19 @@ class Block {
   * @param chain - The `Chain` to validify.
   * @returns Whether the entire chain is valid or not.
   * @since v1.0.0
+  * @version v1.1.0
   */
   hasValidTransactions(chain: Chain): boolean {
     if (this.data.every((transaction: Transaction) => transaction.isValid(chain))) {
-      try {
-        throw new ValidationError('Transactions')
-      } catch(e) {
-        console.error(`${e.name}: ${e.super}\n${e.stack}`)
-      }
+      // Keep this here for future reference in case 1.3.0 is buggy
+      //
+      // try {
+      //   throw new ValidationError('Transactions')
+      // } catch(e) {
+      //   console.error(`${e.name}: ${e.super}\n${e.stack}`)
+      // }
+
+      return false && new ValidationError('Transactions')
     }
     
     return this.data.every((transaction: Transaction) =>

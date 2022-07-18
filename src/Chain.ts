@@ -74,6 +74,7 @@ class Chain {
   * Verifies the `Chain`, and returns `false` if tampered with.
   * @returns Whether the `Transaction` and `Block` are valid.
   * @since v1.0.0
+  * @version v1.1.0
   */
   isValid(): boolean {
     if (
@@ -93,69 +94,73 @@ class Chain {
         currentBlock.hash !== calculateHash(currentBlock) ||
         previousBlock.hash !== currentBlock.previousHash ||
         !currentBlock.hasValidTransactions(this)
-      )
-        try {
-          throw new ValidationError('Hash')
-        } catch (e) {
-          console.error(`${e.name}: ${e.super}\n${e.stack}`)
-        };
+      ) 
+        // Keep this in here for future reference in case 1.3.0 is buggy
+        //
+        // try {
+        //   throw new ValidationError('Hash')
+        // } catch (e) {
+        //   console.error(`${e.name}: ${e.super}\n${e.stack}`)
+        // };
+
+        return false && new ValidationError('Hash');
+      }
+      return true;
     }
-    return true;
-  }
 
 
 
-  /**
-  * Adds a `Transaction` Object to the chain.
-  * @param transaction - The `Transaction` Object to be added.
-  * @since v1.0.0
-  */
-  addTransaction(transaction: Transaction) {
-    const isDuplicate = this.transactions.some(
-      ({ hash }) => hash === transaction.hash
-    );
-    if (!isDuplicate && transaction.isValid(this)) {
-      this.transactions.push(transaction);
+    /**
+    * Adds a `Transaction` Object to the chain.
+    * @param transaction - The `Transaction` Object to be added.
+    * @since v1.0.0
+    */
+    addTransaction(transaction: Transaction) {
+      const isDuplicate = this.transactions.some(
+        ({ hash }) => hash === transaction.hash
+      );
+      if (!isDuplicate && transaction.isValid(this)) {
+        this.transactions.push(transaction);
+      }
     }
-  }
 
-  /**
-  * Gets the balance of a specified `Wallet`.
-  * @param pubKey - The public key of the wallet to be queried.
-  * @returns The balance of the queried `Wallet`.
-  * @since v1.0.0
-  */
-  getBalance(pubKey: string): number {
-    let balance = 0;
-    this.chain.forEach((block) => {
-      block.data.forEach((transaction: Transaction) => {
-        if (transaction.sender === pubKey) {
-          balance -= transaction.amount;
-        }
+    /**
+    * Gets the balance of a specified `Wallet`.
+    * @param pubKey - The public key of the wallet to be queried.
+    * @returns The balance of the queried `Wallet`.
+    * @since v1.0.0
+    */
+    getBalance(pubKey: string): number {
+      let balance = 0;
+      this.chain.forEach((block) => {
+        block.data.forEach((transaction: Transaction) => {
+          if (transaction.sender === pubKey) {
+            balance -= transaction.amount;
+          }
 
-        if (transaction.receiver === pubKey) {
-          balance += transaction.amount;
-        }
+          if (transaction.receiver === pubKey) {
+            balance += transaction.amount;
+          }
+        });
       });
-    });
-    return balance;
+      return balance;
+    }
+
+    /**
+    * Allows the user to mine the `Transaction` to claim their crypto sent to them.
+    * @param rewardAddress - The public key of the intended receiver.
+    * @since v1.0.0
+    */
+    mineTransactions(rewardAddress: string) {
+      const rewardTransaction = new Transaction(
+        NETWORK_WALLET.publicKey,
+        rewardAddress,
+        this.reward
+      );
+      rewardTransaction.sign(NETWORK_WALLET);
+      this.addBlock([rewardTransaction, ...this.transactions]);
+      this.transactions = [];
+    }
   }
 
-  /**
-  * Allows the user to mine the `Transaction` to claim their crypto sent to them.
-  * @param rewardAddress - The public key of the intended receiver.
-  * @since v1.0.0
-  */
-  mineTransactions(rewardAddress: string) {
-    const rewardTransaction = new Transaction(
-      NETWORK_WALLET.publicKey,
-      rewardAddress,
-      this.reward
-    );
-    rewardTransaction.sign(NETWORK_WALLET);
-    this.addBlock([rewardTransaction, ...this.transactions]);
-    this.transactions = [];
-  }
-}
-
-export default Chain;
+  export default Chain;

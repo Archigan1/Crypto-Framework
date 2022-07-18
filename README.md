@@ -7,13 +7,14 @@
 > This package is meant to be used for a building block to your own cryptocurrency.
 
 ## FOREWARNING
-> You only need to download the latest version v1.2.0. v1.2.1, v1.2.2, and v1.2.3 are simply README updates.
 
-> If v1.2.0 causes issues, you can download the latest 100% stable version, v1.1.1, like so:
+> If v1.2.0 or v1.3.0 cause issues, you can download the latest 100% stable version, v1.1.1, like so:
 
 ```npm i  --save crypto-framework@1.1.1```
 
-> v1.2.0 Added new custom error types, and the places where I added my new `ValidationError` may cause it to break. This works at runtime, but in production may misbehave due to how TypeScript handles errors. v1.3.0 will hopefully fix this issue.
+> v1.2.0 Added new custom error types, and the places where I added my new `ValidationError` may cause it to break. This works at runtime, but in production may misbehave due to how TypeScript handles errors. Please read the JSDoc comments if you dare to use this version. ~~v1.3.0 will hopefully fix this issue.~~
+
+> Update v1.3.0: I've stabilised the error handling a bit more. This works at runtime. However, I have no way to check this in production, all I know is that any validation methods that returned false in v1.1.1 are back to returning false as well as returning a `ValidationError` after so the project can run as intended. If you have any issues, you can submit an [issue](https://github.com/archigan1/crypto-framework/issues) or [pull request](https://github.com/archigan1/crypto-framework/pulls) in the [repository](https://github.com/archigan1/crypto-framework). 
 
 ## Prerequisites
 
@@ -94,9 +95,9 @@ Wallet();
 Wallet.send(amount: number, receiver: string, blockchain: Chain);
 
 //Error classes (new as of v1.2.0)
-BlockError(message: string);
+throw new BlockError(message: string);
 
-ValidationError(object: string); // READ JSDOC PROMPTS FOR ERRORS
+throw new ValidationError(object: string); // READ JSDOC PROMPTS FOR ERRORS
 ```
 
 ## Contributing
